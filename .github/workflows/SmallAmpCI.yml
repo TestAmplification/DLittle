@@ -1,0 +1,26 @@
+name: SmallAmpCI
+  
+on:
+  workflow_dispatch:
+    inputs:
+      testClasses:
+        description: 'TestClasses to amplify (comma separated) empty-> all'
+        required: false
+        default: ''
+      parallel_jobs:         
+        description: 'Max number of all parallel jobs (0 use Input testClasses length)'
+        required: true
+        default: '2'
+
+jobs:
+  TestAmplification:
+    uses: mabdi/small-amp/.github/workflows/SmallAmpCI.yml@master
+    with:
+      testClasses: ${{github.event.inputs.testClasses }}
+      parallel_jobs: ${{github.event.inputs.parallel_jobs}}
+      # --------- To be configoured for each project ---------------------
+      input_project_baseline: 'DLittle'
+      input_project_directory: 'src'
+      # --------- End of to be configoured for each project --------------
+    secrets:
+      secret_github_token: ${{secrets.GITHUB_TOKEN}}
