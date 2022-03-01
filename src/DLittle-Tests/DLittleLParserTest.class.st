@@ -34,6 +34,32 @@ DLittleLParserTest >> testParseClassSide [
 	self assert: list printString equals: '(author : Aldiss Brian (serie : helliconia (title : Le printemps d''helliconia (read : no) (style : SF) (price : 1)) (title : Helliconia l''ete (read : no) (style : SF) (price : 1)) (title : L''hiver d''helliconia (read : no) (style : SF) (price : 1)) (books : individual (title : L''instant de l''eclipse (read : no) (style : fantaisie) (price : 1)))))'
 ]
 
+{ #category : #'as yet unclassified' }
+DLittleLParserTest >> testParseClassSide_amp_A6_L1 [
+
+	"SmallAmp has derived this test from `DLittleLParserTest>>#testParseClassSide` by applying some transformations and regenerating its assertions.
+	This test can cover this part:
+	*	In `DLittleLParser>> #scanPairBody` from 572 to 622:
+		Operation: ReplaceIfFalseReceiverWithTrueOperator
+		Code snippet: `isOpening = $) ifFalse: [ self error: 'Missing )' ]`
+		Dynamic state: {#isOpening->$)}
+		Mutant id: ReplaceIfFalseReceiverWithTrueOperator#DLittleLParser#scanPairBody#572#622
+"
+
+	<madeBySmallAmp>
+	| list |
+	self
+		should: [ 
+			list := DLittleLParser parse: '(author : Aldiss Brian 
+  (serie : helliconia  
+   		(title: Le printemps d''helliconia (read: no)  (style: SF) (price: 1))
+  	 	(title: Helliconia l''ete (read: no)  (style: SF) (price: 1))
+ 	  	(title: L''hiver d''helliconia (read: no)  (style: SF) (price: 1))
+  (books: individual
+    	( title: L''instant de l''eclipse (read: no0  (style: fantaisie) (price: 1)))))' ]
+		raise: Error
+]
+
 { #category : #tests }
 DLittleLParserTest >> testParseComma [
 	| p list |

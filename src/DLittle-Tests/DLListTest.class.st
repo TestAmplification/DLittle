@@ -21,6 +21,27 @@ DLListTest >> testAddingAPairIsAddingThisPairLast [
 
 ]
 
+{ #category : #'as yet unclassified' }
+DLListTest >> testAddingAPairIsAddingThisPairLast_amp_A24 [
+
+	"SmallAmp has derived this test from `DLListTest>>#testAddingAPairIsAddingThisPairLast` by applying some transformations and regenerating its assertions.
+	This test can cover this part:
+	*	In `DLList>> #pairAtKey:` from 94 to 166:
+		Operation: ReplaceDetectIfNoneSecondBlockWithEmptyBlockOperator
+		Code snippet: `pairSequence
+	detect: [ :p | p key = aKey ]
+	ifNone: [ KeyNotFound signal ]`
+		Dynamic state: nil
+		Mutant id: ReplaceDetectIfNoneSecondBlockWithEmptyBlockOperator#DLList#pairAtKey:#94#166
+"
+
+	<madeBySmallAmp>
+	| l |
+	l := DLList new.
+	l key: 1 value: 2.
+	self should: [ l pairAtKey: 5 ] raise: KeyNotFound
+]
+
 { #category : #tests }
 DLListTest >> testCharLf [
 	
@@ -65,6 +86,25 @@ DLListTest >> testCreationSimple [
 
 ]
 
+{ #category : #'as yet unclassified' }
+DLListTest >> testCreationSimple_amp [
+
+	"SmallAmp has derived this test from `DLListTest>>#testCreationSimple` by regenerating its assertions.
+	This test can cover this part:
+	*	In `DLList>> #head` from 8 to 13:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ head`
+		Dynamic state: nil
+		Mutant id: RemoveCaretOperator#DLList#head#8#13
+"
+
+	<madeBySmallAmp>
+	| l |
+	l := DLList new.
+	self assert: l head class equals: DLPair.
+	l key: 1 value: 2
+]
+
 { #category : #tests }
 DLListTest >> testDo [
 	
@@ -77,6 +117,34 @@ DLListTest >> testDo [
 	l do: [ :p | sum := sum + p value ].
 	self assert: sum equals: 102.
 
+]
+
+{ #category : #'as yet unclassified' }
+DLListTest >> testDo_amp [
+
+	"SmallAmp has derived this test from `DLListTest>>#testDo` by regenerating its assertions.
+	This test can cover this part:
+	*	In `DLList>> #head` from 8 to 13:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ head`
+		Dynamic state: nil
+		Mutant id: RemoveCaretOperator#DLList#head#8#13
+"
+
+	<madeBySmallAmp>
+	| l sum |
+	sum := 0.
+	l := DLList new.
+	self assert: l head class equals: DLPair.
+	l
+		key: 1 value: 2;
+		addPairToRest: (DLPair new
+				 key: 3;
+				 value: 40);
+		addPairToRest: (DLPair new
+				 key: 5;
+				 value: 60);
+		do: [ :p | sum := sum + p value ]
 ]
 
 { #category : #tests }
