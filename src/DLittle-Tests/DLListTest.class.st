@@ -119,6 +119,34 @@ DLListTest >> testDo [
 
 ]
 
+{ #category : #'as yet unclassified' }
+DLListTest >> testDo_amp [
+
+	"SmallAmp has derived this test from `DLListTest>>#testDo` by regenerating its assertions.
+	This test can cover this part:
+	*	In `DLList>> #head` from 8 to 13:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ head`
+		Dynamic state: nil
+		Mutant id: RemoveCaretOperator#DLList#head#8#13
+"
+
+	<madeBySmallAmp>
+	| l sum |
+	sum := 0.
+	l := DLList new.
+	self assert: l head class equals: DLPair.
+	l
+		key: 1 value: 2;
+		addPairToRest: (DLPair new
+				 key: 3;
+				 value: 40);
+		addPairToRest: (DLPair new
+				 key: 5;
+				 value: 60);
+		do: [ :p | sum := sum + p value ]
+]
+
 { #category : #tests }
 DLListTest >> testKeysAndValuesDo [
 	
