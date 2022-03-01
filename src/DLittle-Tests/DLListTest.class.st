@@ -21,6 +21,27 @@ DLListTest >> testAddingAPairIsAddingThisPairLast [
 
 ]
 
+{ #category : #'as yet unclassified' }
+DLListTest >> testAddingAPairIsAddingThisPairLast_amp_A24 [
+
+	"SmallAmp has derived this test from `DLListTest>>#testAddingAPairIsAddingThisPairLast` by applying some transformations and regenerating its assertions.
+	This test can cover this part:
+	*	In `DLList>> #pairAtKey:` from 94 to 166:
+		Operation: ReplaceDetectIfNoneSecondBlockWithEmptyBlockOperator
+		Code snippet: `pairSequence
+	detect: [ :p | p key = aKey ]
+	ifNone: [ KeyNotFound signal ]`
+		Dynamic state: nil
+		Mutant id: ReplaceDetectIfNoneSecondBlockWithEmptyBlockOperator#DLList#pairAtKey:#94#166
+"
+
+	<madeBySmallAmp>
+	| l |
+	l := DLList new.
+	l key: 1 value: 2.
+	self should: [ l pairAtKey: 5 ] raise: KeyNotFound
+]
+
 { #category : #tests }
 DLListTest >> testCharLf [
 	
