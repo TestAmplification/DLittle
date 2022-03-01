@@ -44,6 +44,30 @@ DLexerTest >> testEmptyConsume [
 	
 ]
 
+{ #category : #'as yet unclassified' }
+DLexerTest >> testEmpty_amp [
+
+	"SmallAmp has derived this test from `DLexerTest>>#testEmpty` by regenerating its assertions.
+	This test can cover these parts:
+	*	In `DLexer>> #white` from 8 to 14:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ white`
+		Dynamic state: {#white->{Character space. Character tab. Character lf. Character cr}}
+		Mutant id: RemoveCaretOperator#DLexer#white#8#14
+	*	In `DLexer>> #sep` from 6 to 10:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ sep`
+		Dynamic state: {#sep->#($( $) $:)}
+		Mutant id: RemoveCaretOperator#DLexer#sep#6#10
+"
+
+	<madeBySmallAmp>
+	l on: ''.
+	self
+		assert: l white class equals: Array;
+		assert: l sep class equals: Array
+]
+
 { #category : #tests }
 DLexerTest >> testOnlySpace [
 
