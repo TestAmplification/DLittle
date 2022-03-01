@@ -65,6 +65,25 @@ DLListTest >> testCreationSimple [
 
 ]
 
+{ #category : #'as yet unclassified' }
+DLListTest >> testCreationSimple_amp [
+
+	"SmallAmp has derived this test from `DLListTest>>#testCreationSimple` by regenerating its assertions.
+	This test can cover this part:
+	*	In `DLList>> #head` from 8 to 13:
+		Operation: RemoveCaretOperator
+		Code snippet: `^ head`
+		Dynamic state: nil
+		Mutant id: RemoveCaretOperator#DLList#head#8#13
+"
+
+	<madeBySmallAmp>
+	| l |
+	l := DLList new.
+	self assert: l head class equals: DLPair.
+	l key: 1 value: 2
+]
+
 { #category : #tests }
 DLListTest >> testDo [
 	
